@@ -1,1 +1,3 @@
-
+zramctl --find --size 4G
+mkswap /dev/zram0
+swapon /dev/zram0
