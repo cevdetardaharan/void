@@ -1,0 +1,4 @@
+MODIFY_EFI_ENTRIES=1
+OPTIONS="root={UID} options"
+DISK="/dev/sda"
+PART=1
