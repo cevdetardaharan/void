@@ -1,0 +1,2 @@
+UUID={UID} / xfs noatime 0 0
+UUID={UID} /boot vfat  0 1
