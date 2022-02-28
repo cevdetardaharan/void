@@ -1,2 +1,3 @@
 UUID={UID} / xfs noatime 0 0
 UUID={UID} /boot vfat  0 1
+efivarfs /sys/firmware/efi/efivars efivarfs defaults 0 0
