@@ -19,7 +19,8 @@ XBPS_ARCH=$ARCH xbps-install -S -r /mnt -R "$REPO"
 base-files ncurses coreutils findutils diffutils libgcc
 dash bash grep gzip file sed gawk less util-linux which tar
 shadow procps-ng tzdata pciutils usbutils iana-etc dhcpcd
-kbd xbps iproute2 xbps opendoas kmod eudev runit-void
+kbd iproute2 xbps iproute2 xbps opendoas kmod eudev runit-void
+glibc-locales linux
 ---------------------------------------------------
 mount -R /sys /mnt/sys && mount --make-rslave /mnt/sys
 mount -R /dev /mnt/dev && mount --make-rslave /mnt/dev
@@ -59,6 +60,12 @@ xbps-reconfigure -fa
 exit
 umount -R /mnt/
 reboot now
+
+# Sway
+xi sway foot dmenu-wayland grim slurp wl-clipboard
+
+# GPU
+xi mesa-intel-dri
 
 # Sound
 xi alsa-utils
