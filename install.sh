@@ -62,10 +62,13 @@ umount -R /mnt/
 reboot now
 
 # Sway
-xi sway foot dmenu-wayland grim slurp wl-clipboard
+xi seatd sway foot dmenu-wayland grim slurp wl-clipboard
 
 # GPU
 xi mesa-intel-dri
 
 # Sound
 xi alsa-utils
+
+# My Programs
+xi htop mpv firefox vscode
