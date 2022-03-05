@@ -28,43 +28,37 @@ cp /etc/resolv.conf /mnt/etc/
 PS1='(chroot) # ' chroot /mnt/ /bin/bash
 
 echo "void" > /etc/hostname
-
+echo "en_US.UTF-8 UTF-8" > /etc/default/libc-locales
+xbps-reconfigure -f glibc-locales
 ln -sf /usr/share/zoneinfo/Europe/Istanbul /etc/localtime
 
 nano /etc/vconsole.conf
 # KEYMAP=trq
 
-nano /etc/xbps.d/d.conf
+nano /etc/xbps.d/0.conf
 # ignorepkg = linux-firmware-{amd,broadcom,nvidia}
 
 nano /etc/default/efibootmgr-kernel-hook
 # MODIFY_EFI_ENTRIES=1
-# OPTIONS="root=UUID={UID} loglevel=4"
+# OPTIONS="root=UUID={UID} loglevel=0 console=tty1 udev.log_level=0 vt.global_cursor_default=0 mitigations=off nowatchdog msr.allow_writes=on pcie_aspm=off intel_idle.max_cstate=1 cryptomgr.notests initcall_debug intel_iommu=igfx_off no_timer_check noreplace-smp page_alloc.shuffle=1 rcupdate.rcu_expedited=1 tsc=reliable rootfstype=ext4"
 # DISK="/dev/sda"
 # PART=1
 
 echo "permit persist :cennedy" > /etc/doas.conf
 useradd -m cennnedy
-usermod -aG audio,video cennedy
+usermod -aG disk,storage,input,audio,video cennedy
 passwd cennedy
 passwd
 
 cp /proc/mounts /etc/fstab
 blkid >> /etc/fstab
-# efivarfs /sys/firmware/efi/efivars efivarfs defaults 0 0
+# tmpfs /tmp tmpfs defaults,nosuid,nodev 0 0
 # UUID={UID} / ext4 rw,relatime 0 1
 # UUID={UID} /boot vfat rw,relatime 0 2
 xbps-reconfigure -fa
 exit
 umount -R /mnt/
 reboot now
-
-
-# Build
-xi libX11-devel libXft-devel make pkgconf
-
-# XORG
-xi dbus-x11 xorg-server sx mesa-dri
 
 # Sound
 xi alsa-utils
