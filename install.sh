@@ -19,8 +19,8 @@ XBPS_ARCH=$ARCH xbps-install -S -r /mnt -R "$REPO"
 base-files ncurses coreutils findutils diffutils libgcc
 dash bash grep gzip file sed gawk less util-linux which tar
 shadow procps-ng tzdata pciutils usbutils iana-etc dhcpcd
-kbd iproute2 xbps iproute2 xbps opendoas kmod eudev runit-void
-glibc-locales linux
+kbd iproute2 xbps opendoas kmod eudev runit-void efibootmgr nano
+glibc-locales linux seatd
 ---------------------------------------------------
 mount -R /sys /mnt/sys && mount --make-rslave /mnt/sys
 mount -R /dev /mnt/dev && mount --make-rslave /mnt/dev
@@ -47,7 +47,7 @@ nano /etc/default/efibootmgr-kernel-hook
 
 echo "permit persist :cennedy" > /etc/doas.conf
 useradd -m cennnedy
-usermod -aG disk,storage,input,audio,video cennedy
+usermod -aG disk,storage,input,audio,video,_seatd cennedy
 passwd cennedy
 passwd
 
