@@ -31,7 +31,7 @@ PS1='(chroot) # ' chroot /mnt/ /bin/bash
 echo "void" > /etc/hostname
 echo "en_US.UTF-8 UTF-8" > /etc/default/libc-locales
 xbps-reconfigure -f glibc-locales
-ln -sf /usr/share/zoneinfo/GMT0 /etc/localtime
+ln -sf /usr/share/zoneinfo/Europe/Istanbul /etc/localtime
 
 nano /etc/vconsole.conf
 # KEYMAP=trq
