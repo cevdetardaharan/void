@@ -68,7 +68,7 @@ xi make gcc wlroots-devel
 xi wlroots foot dmenu-wayland grim slurp wl-clipboard wlsunset
 
 # GPU
-xi mesa-dri mesa-vulkan-intel libva-intel-driver
+xi mesa-dri libva-intel-driver
 
 # Sound
 xi alsa-utils
