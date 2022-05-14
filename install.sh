@@ -41,7 +41,7 @@ nano /etc/xbps.d/0.conf
 
 nano /etc/default/efibootmgr-kernel-hook
 # MODIFY_EFI_ENTRIES=1
-# OPTIONS="root=UUID={UID} loglevel=0 console=tty1 udev.log_level=0 vt.global_cursor_default=0 mitigations=off nowatchdog msr.allow_writes=on pcie_aspm=off intel_idle.max_cstate=1 cryptomgr.notests initcall_debug intel_iommu=igfx_off no_timer_check noreplace-smp page_alloc.shuffle=1 rcupdate.rcu_expedited=1 tsc=reliable rootfstype=ext4"
+# OPTIONS="root=UUID={UID} loglevel=0 console=tty1 udev.log_level=0 vt.global_cursor_default=0 nowatchdog msr.allow_writes=on pcie_aspm=off intel_idle.max_cstate=1 cryptomgr.notests initcall_debug intel_iommu=igfx_off no_timer_check noreplace-smp page_alloc.shuffle=1 rcupdate.rcu_expedited=1 tsc=reliable rootfstype=ext4"
 # DISK="/dev/sda"
 # PART=1
 
