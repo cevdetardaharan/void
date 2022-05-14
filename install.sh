@@ -16,11 +16,11 @@ ARCH=x86_64
 # base-installation
 XBPS_ARCH=$ARCH xbps-install -S -r /mnt -R "$REPO"
 ---------------------------------------------------
-base-files ncurses coreutils findutils diffutils libgcc
-dash bash grep gzip file sed gawk less util-linux which tar
+base-files ncurses coreutils findutils libgcc
+dash bash grep gzip file sed gawk less util-linux tar
 shadow procps-ng tzdata pciutils usbutils iana-etc dhcpcd
-kbd iproute2 xbps opendoas kmod eudev runit-void efibootmgr nano
-glibc-locales linux seatd
+kbd iproute2 xbps opendoas kmod eudev runit-void efibootmgr
+glibc-locales linux seatd nano
 ---------------------------------------------------
 mount -R /sys /mnt/sys && mount --make-rslave /mnt/sys
 mount -R /dev /mnt/dev && mount --make-rslave /mnt/dev
