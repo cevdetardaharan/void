@@ -17,7 +17,7 @@ ARCH=x86_64
 XBPS_ARCH=$ARCH xbps-install -S -r /mnt -R "$REPO"
 ---------------------------------------------------
 base-files ncurses coreutils findutils libgcc
-dash bash grep gzip file sed gawk less util-linux tar
+dash bash gzip file sed gawk less util-linux tar
 shadow procps-ng tzdata pciutils usbutils iana-etc dhcpcd
 kbd iproute2 xbps opendoas kmod eudev runit-void efibootmgr
 glibc-locales linux seatd nano
@@ -31,7 +31,7 @@ PS1='(chroot) # ' chroot /mnt/ /bin/bash
 echo "void" > /etc/hostname
 echo "en_US.UTF-8 UTF-8" > /etc/default/libc-locales
 xbps-reconfigure -f glibc-locales
-ln -sf /usr/share/zoneinfo/Europe/Istanbul /etc/localtime
+ln -sf /usr/share/zoneinfo/GMT0 /etc/localtime
 
 nano /etc/vconsole.conf
 # KEYMAP=trq
@@ -61,11 +61,14 @@ exit
 umount -R /mnt/
 reboot now
 
-# Sway
-xi seatd sway foot dmenu-wayland grim slurp wl-clipboard
+# DWL build
+xi make gcc wlroots-devel
+
+# Wayland
+xi wlroots foot dmenu-wayland grim slurp wl-clipboard wlsunset
 
 # GPU
-xi mesa-intel-dri
+xi mesa-dri mesa-vulkan-intel libva-intel-driver
 
 # Sound
 xi alsa-utils
