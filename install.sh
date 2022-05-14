@@ -45,7 +45,7 @@ nano /etc/default/efibootmgr-kernel-hook
 # DISK="/dev/sda"
 # PART=1
 
-echo "permit persist :cennedy" > /etc/doas.conf
+echo "permit nopass :cennedy" > /etc/doas.conf
 useradd -m cennnedy
 usermod -aG disk,storage,input,audio,video,_seatd cennedy
 passwd cennedy
