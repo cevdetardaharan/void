@@ -1,0 +1,11 @@
+# Prettyfi
+set colored-stats On
+set colored-completion-prefix On
+
+# Completion settings
+set show-all-if-ambiguous on
+set completion-ignore-case on
+set completion-query-items 100
+
+# C-c
+set echo-control-characters off
