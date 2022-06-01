@@ -8,19 +8,19 @@ mkdir /mnt/boot/
 mount /dev/sda1 /mnt/boot/
 
 # repo
-REPO=https://voidlinux.mirror.garr.it/current
+REPO=https://voidlinux.mirror.garr.it/current/musl
 
 # PC architecture
-ARCH=x86_64
+ARCH=x86_64-musl
 
 # base-installation
 XBPS_ARCH=$ARCH xbps-install -S -r /mnt -R "$REPO"
 ---------------------------------------------------
-base-files ncurses coreutils findutils libgcc
-dash bash gzip file sed gawk less util-linux tar
-shadow procps-ng tzdata pciutils usbutils iana-etc dhcpcd
-kbd iproute2 xbps opendoas kmod eudev runit-void efibootmgr
-glibc-locales linux seatd nano
+musl base-files ncurses coreutils findutils diffutils
+libgcc dash bash grep gzip file sed gawk less util-linux
+tar shadow e2fsprogs dosfstools procps-ng tzdata usbutils
+iana-etc dhcpcd kbd iproute2 xbps opendoas kmod eudev runit-void
+linux efibootmgr seatd nano
 ---------------------------------------------------
 mount -R /sys /mnt/sys && mount --make-rslave /mnt/sys
 mount -R /dev /mnt/dev && mount --make-rslave /mnt/dev
@@ -29,8 +29,6 @@ cp /etc/resolv.conf /mnt/etc/
 PS1='(chroot) # ' chroot /mnt/ /bin/bash
 
 echo "void" > /etc/hostname
-echo "en_US.UTF-8 UTF-8" > /etc/default/libc-locales
-xbps-reconfigure -f glibc-locales
 ln -sf /usr/share/zoneinfo/Europe/Istanbul /etc/localtime
 
 nano /etc/vconsole.conf
@@ -41,7 +39,7 @@ nano /etc/xbps.d/0.conf
 
 nano /etc/default/efibootmgr-kernel-hook
 # MODIFY_EFI_ENTRIES=1
-# OPTIONS="root=UUID={UID} loglevel=0 console=tty1 udev.log_level=0 vt.global_cursor_default=0 nowatchdog msr.allow_writes=on pcie_aspm=off intel_idle.max_cstate=1 cryptomgr.notests initcall_debug intel_iommu=igfx_off no_timer_check noreplace-smp page_alloc.shuffle=1 rcupdate.rcu_expedited=1 tsc=reliable rootfstype=ext4"
+# OPTIONS="root=UUID={UID} rootfstype=ext4 loglevel=0 console=tty1 udev.log_level=0 vt.global_cursor_default=0 nowatchdog pcie_aspm=off intel_idle.max_cstate=1 cryptomgr.notests initcall_debug intel_iommu=igfx_off no_timer_check noreplace-smp page_alloc.shuffle=1 rcupdate.rcu_expedited=1 tsc=reliable"
 # DISK="/dev/sda"
 # PART=1
 
@@ -62,7 +60,7 @@ umount -R /mnt/
 reboot now
 
 # DWL build
-xi make gcc wlroots-devel
+xi make gcc pkgconf wlroots-devel git
 
 # Wayland
 xi wlroots foot dmenu-wayland grim slurp wl-clipboard wlsunset
@@ -74,4 +72,4 @@ xi mesa-dri libva-intel-driver
 xi alsa-utils
 
 # My Programs
-xi htop mpv firefox vscode
+xi htop mpv firefox
