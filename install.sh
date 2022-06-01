@@ -45,7 +45,7 @@ nano /etc/default/efibootmgr-kernel-hook
 
 echo "permit nopass :cennedy" > /etc/doas.conf
 useradd -m cennnedy
-usermod -aG disk,storage,input,audio,video,_seatd cennedy
+usermod -aG audio,video,_seatd cennedy
 passwd cennedy
 passwd
 
