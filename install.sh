@@ -8,7 +8,7 @@ mkdir /mnt/boot/
 mount /dev/sda1 /mnt/boot/
 
 # repo
-REPO=https://alpha.de.repo.voidlinux.org/current
+REPO=https://voidlinux.mirror.garr.it/current
 
 # PC architecture
 ARCH=x86_64
