@@ -31,9 +31,6 @@ PS1='(chroot) # ' chroot /mnt/ /bin/bash
 echo "void" > /etc/hostname
 ln -sf /usr/share/zoneinfo/Europe/Istanbul /etc/localtime
 
-nano /etc/vconsole.conf
-# KEYMAP=trq
-
 nano /etc/xbps.d/0.conf
 # ignorepkg = linux-firmware-{amd,broadcom,nvidia}
 
