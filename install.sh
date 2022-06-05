@@ -58,9 +58,13 @@ reboot now
 
 # DWL build
 xi make gcc pkgconf wlroots-devel git
+git clone https://github.com/cevdetardaharan/dwl
 
 # Wayland
 xi wlroots foot dmenu-wayland grim slurp wl-clipboard wlsunset
+
+# Fonts
+xi font-hack-ttf
 
 # GPU
 xi mesa-dri libva-intel-driver
@@ -69,4 +73,4 @@ xi mesa-dri libva-intel-driver
 xi alsa-utils
 
 # My Programs
-xi htop mpv firefox
+xi htop mpv firefox yt-dlp spotifyd spotify-tui
